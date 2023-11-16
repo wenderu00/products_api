@@ -21,8 +21,12 @@ describe('catalog object Tests', function() {
     done()
   }),
   it('catalog can returns products with id', function(done){
-    expect(catalog.getProductsById(1)).to.be.an('array');
-    expect(catalog.getProductsById(1).length).to.be.equal(1)
+    expect(catalog.getProductsByUserId(1)).to.be.an('array');
+    expect(catalog.getProductsByUserId(1).length).to.be.equal(1)
     done();
+  })
+  it('catalog can modify a product by id', function(done){
+    expect(catalog).to.have.property('updateProductById')
+    done()
   })
 });

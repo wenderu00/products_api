@@ -1,16 +1,19 @@
-function Catalog(){
-    this.products = [];
-}
+class Catalog{
+    products = []
 
-Catalog.prototype.addOnCatalog = function(product,userId){
-    product.userId = userId;
-    product.id = this.products.length+1;
-    this.products.push(product);
-    return product.id;
-}
+    addOnCatalog(product,userId){
+        product.userId = userId;
+        product.id = this.products.length+1;
+        this.products.push(product);
+        return product.id;
+    }
 
-Catalog.prototype.getProductsById = function(userId){
-    return this.products.filter(product => product.userId == userId);
+    getProductsByUserId(userId){
+        return this.products.filter(product => product.userId == userId);
+    }
+
+    updateProductById(productId,userId){
+    }
 }
 
 module.exports = Catalog;
