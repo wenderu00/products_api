@@ -3,9 +3,19 @@ const chaiHttp = require('chai-http');
 const expect = chai.expect;
 chai.use(chaiHttp);
 
-const app = require('../src/app'); // Substitua pelo caminho do seu arquivo de servidor Express
+const app = require('../../src/app'); // Substitua pelo caminho do seu arquivo de servidor Express
 
 describe('API Tests', function() {
+  let server;
+
+  before(done =>{
+    server = app.listen(3000,done);
+  })  
+  
+  after(done => {
+      server.close(done);
+  });
+  
   it('GET / should be return status 200 and response a object with hello world', function(done) {
     chai.request(app)
       .get('/')
@@ -28,7 +38,7 @@ describe('API Tests', function() {
   it('POST /product/:userId should be return status 201 and response a object with product id', function(done){
     chai.request(app)
       .post('/product/1')
-      .send({"category": "NFT"})
+      .send({name: "monkey", category: "NFT"})
       .end((err, res)=>{
         expect(res).to.have.status(201)
         expect(res.body).to.be.a('object')

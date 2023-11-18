@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 const Catalog = require('./catalog')
 const catalog = new  Catalog();
 
@@ -19,11 +18,7 @@ app.get("/products", (req,res)=>{
 })
 
 app.get("/products/:userId",(req,res)=>{
-  res.status(200).send(catalog.getProductsById(req.params.id))
+  res.status(200).send(catalog.getProductsByUserId(req.params.id))
 })
-
-app.listen(port, () => {
-  console.log(`API rodando em http://localhost:${port}`);
-});
 
 module.exports = app
