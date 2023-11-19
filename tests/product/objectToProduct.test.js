@@ -1,5 +1,3 @@
-const chai = require('chai');
-const expect = chai.expect;
 const Product = require('../../src/product');
 const emptyProduct = new Product();
 const userId = 1;
@@ -19,17 +17,17 @@ describe('objectToProduct product class method tests', function(){
     
     it('has convert method objectToProduct', function(done){
         expect(Product)
-            .to.have.property('objectToProduct')
+            .toHaveProperty('objectToProduct')
         done()
     })
     it('convert a valid object to product object', function(done){
         expect(Product.objectToProduct(validObj) instanceof Product)
-            .to.equal(true);
+            .toEqual(true);
         done();
     })
     it('cant be convert a invalid object to product', function(done){
         expect(Product.objectToProduct(emptyProduct))
-            .to.equal(false);
+            .toEqual(false);
         done();
     })
 })
